@@ -51,7 +51,8 @@ Academic / Research Open-source python libraries for Geotechnical Engineering
 ## References
 <ol>
 <li>Lecture Notes in Professional Master of Structural Design in Tall Buildings (PMTB) at Asian Institute Technology - Thailand </li>
-<ol>
+</ol>
+
 
 Created by:
 
