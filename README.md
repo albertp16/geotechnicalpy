@@ -48,6 +48,11 @@ Academic / Research Open-source python libraries for Geotechnical Engineering
 
 ## Soil Structure Interaction *(under-development)*
 
+## References
+<ol>
+<li>Lecture Notes in Professional Master of Structural Design in Tall Buildings (PMTB) at Asian Institute Technology - Thailand </li>
+<ol>
+
 Created by:
 
 **Albert Pamonag, M.Eng** <br>
