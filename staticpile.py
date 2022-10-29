@@ -28,7 +28,8 @@ def topDownSearch(x,data):
     
     top = top_index
     bot = top_index + 1
-        
+    print(top)
+    print(bot)
     top_value = data["angle"][top]
     down_value = data["angle"][bot]
 
