@@ -2,7 +2,7 @@
 
 Academic / Research Open-source python libraries for Geotechnical Engineering 
 
-## Shallow Foundation 
+## Shallow Foundation *(under-development)*
 
 <ol>
 <li> Design for Ultimate Limit State
@@ -21,7 +21,7 @@ Academic / Research Open-source python libraries for Geotechnical Engineering
 </li>
 </ol>
 
-## Design of Deep Foundations
+## Design of Deep Foundations *(under-development)*
 
 ### Pile Foundation
 
@@ -31,7 +31,7 @@ Academic / Research Open-source python libraries for Geotechnical Engineering
 <li> Design for Ultimate Limit State
   <ol>
     <li> Estimation of Ultimate Capacity of Piles and Pile Groups </li>
-    <li> Negative Skin Frictio </li>
+    <li> Negative Skin Friction </li>
   </ol>
 </li>
 <li> Design for Serviceability Limit State
@@ -41,6 +41,12 @@ Academic / Research Open-source python libraries for Geotechnical Engineering
   </ol>
 </li>
 </ol>
+
+## Pile Raft Foundation *(under-development)*
+
+## Deep Excavation *(under-development)*
+
+## Soil Structure Interaction *(under-development)*
 
 Created by:
 
