@@ -16,7 +16,7 @@ Academic / Research Open-source python libraries for Geotechnical Engineering
       <ol>
         <li>Immediate Settlement</i>
         <li>Consolidation Settlement</i>
-      </li>
+      </ol>
   </ol>
 </li>
 </ol>
