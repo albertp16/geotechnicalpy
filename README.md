@@ -34,13 +34,8 @@ Meyerhof (1966)
 Created by:
 
 **Albert Pamonag, M.Eng** 
-
----
-
 Currently enrolled in Professional Master of Structural Design in Tall Buildings (PMTB) at Asian Institute Technology - Thailand.
-
----
-
-He complete is Master of Engineer in Civil Engineer specialization in Structural Engineering at De la Salle University - Manila.
+Completed in Master of Engineer in Civil Engineer specialization in Structural Engineering at De la Salle University - Manila.
+Email: albertpamonag@gmail.com
 
 
