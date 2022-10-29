@@ -4,11 +4,22 @@ Academic / Research Open-source python libraries for Geotechnical Engineering
 
 ## Shallow Foundation 
 
-Estimation of Bearing Capacity 
-
-Terzaghi (1943)
-
-Meyerhof (1966)
+<ol>
+<li> Design for Ultimate Limit State
+  <ol>
+    <li> Estimation of Bearing Capacity </li>
+  </ol>
+</li>
+<li> Design for Serviceability Limit State
+  <ol>
+    <li> Estimation of Single Pile Settlement 
+      <ol>
+        <li>Immediate Settlement</i>
+        <li>Consolidation Settlement</i>
+      </li>
+  </ol>
+</li>
+</ol>
 
 ## Design of Deep Foundations
 
