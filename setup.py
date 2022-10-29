@@ -12,7 +12,7 @@ VERSION = '0.0.1'
 DESCRIPTION = 'Geotechnical Engineering Python library'
 LONG_DESCRIPTION = ''
 
-# Setting up
+# Setting up..
 setup(
     name="geotechnicalpy",
     version=VERSION,
@@ -24,7 +24,7 @@ setup(
     keywords=['python'],
     classifiers=[
         "Development Status :: 1 - Planning",
-        "Intended Audience :: Developers, Acadamics",
+        "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
         "Operating System :: Unix",
         "Operating System :: MacOS :: MacOS X",
