@@ -2,6 +2,10 @@
 
 Academic / Research Open-source python libraries for Geotechnical Engineering 
 
+Install package with, 
+
+`pip install geotechnicalpy==0.0.1`
+
 ## Shallow Foundation *(under-development)*
 
 <ol>
