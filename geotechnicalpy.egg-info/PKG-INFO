@@ -6,7 +6,7 @@ Author: albertp16 (Albert Pamonag)
 Author-email: <albertpamonag@gmail.com>
 Keywords: python
 Classifier: Development Status :: 1 - Planning
-Classifier: Intended Audience :: Developers, Acadamics
+Classifier: Intended Audience :: Developers
 Classifier: Programming Language :: Python :: 3
 Classifier: Operating System :: Unix
 Classifier: Operating System :: MacOS :: MacOS X

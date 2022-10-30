@@ -71,6 +71,55 @@ def plotMeyerhof(nc,nq,ny,angle):
     plt.legend()
     plt.show()
 
+def bearingTerzaghi(c,nc,q,nq,y,b,nr,ftg_type):
+    """
+    Terzaghi (1943) Bearing Capacity Equation
+
+    Parameters
+    ----------
+    c : TYPE float
+        DESCRIPTION. Cohesion\n
+    nc : TYPE float
+        DESCRIPTION. Terzaghi Capacity Factors\n
+    q : TYPE float
+        DESCRIPTION. Surcharge\n
+    nq : TYPE float
+        DESCRIPTION. Terzaghi Capacity Factors\n
+    y : TYPE float
+        DESCRIPTION. Unit Weight of Soil\n
+    b : TYPE float
+        DESCRIPTION. Width of Foundation\n
+    nr : TYPE float
+        DESCRIPTION.Terzaghi Capacity Factors\n
+    ftg_type : TYPE string
+        DESCRIPTION. sc & sr factor from type of foundation ["strip","square","circular"]\n
+
+    Returns
+    -------
+    ubc : TYPE float
+        DESCRIPTION. Ultimate Bearing Capacity
+
+    """
+    if ftg_type == 'strip':
+        sc = 1
+        sr = 1
+    elif ftg_type == 'square': 
+        sc = 1.3 
+        sr = 0.8
+    elif ftg_type == 'circular': 
+        sc = 1.3
+        sr = 0.6 
+    
+    cohesion_term = c*nc*sc
+    surcharge_term = q*nq 
+    soil_weight_term = 0.5*y*b*nr*sr
+    
+    ubc = cohesion_term + surcharge_term + soil_weight_term
+    return ubc
+
+    
+    
+
 # plotTerzaghi(
 #     terzaghi_bearing_capacity_factors['nc'],
 #     terzaghi_bearing_capacity_factors['nq'],
