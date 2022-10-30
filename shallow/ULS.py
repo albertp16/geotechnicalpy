@@ -8,7 +8,6 @@ import math
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-## Data information of the shallow foundation
 
 terzaghi_bearing_capacity_factors = {
     "angle" : [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
@@ -32,25 +31,30 @@ terzaphi_pd = {
 
 terzagi_table = pd.DataFrame(data = terzaphi_pd)
 
-def plotTerzaghi(nc,nq,ny,angle):
-    plot_x = nc
-    plot_x2 = nq
-    plot_x3 = ny
-    plot_y = angle
+def plotTerzaghi(nc,nq,ny,angle,author,plotx,ploty):
     
-    fig, ax = plt.subplots(figsize=(15,10))
-    ax.plot(plot_x, plot_y, label = "nc")
-    ax.plot(plot_x2, plot_y, label = "nq")
-    ax.plot(plot_x3, plot_y, label = "ny")
+    ##defeault size
+    if plotx == 'undefined' : plotx = 15
+    if ploty == 'undefined' : ploty = 10
+    
+    fig, ax = plt.subplots(figsize=(plotx,ploty))
+    ax.plot(nc, angle, label = "nc")
+    ax.plot(nq, angle, label = "nq")
+    ax.plot(ny, angle, label = "ny")
+    
+    if(author == 't'):
+        name = 'Terzaghi'
+    elif(author == 'm'):
+        name = 'Meyerhof'
+    
     ax.set(xlabel="Bearing Capacity Factor, Nc, Nq, Ny", ylabel="Angle of Shear resistance,Φ'(deg)",
-            title="Terzaghi (1943) Bearing Capacity Factor")
+            title= name + "Bearing Capacity Factor")
     ax.grid()
-    fig.savefig("Terzaghi_plot.png")
+    fig.savefig(name + "_plot.png")
     plt.xscale('log')
     plt.legend()
     plt.show()
 
-def plotMeyerhof(nc,nq,ny,angle):
     plot_x = nc
     plot_x2 = nq
     plot_x3 = ny
@@ -118,14 +122,13 @@ def bearingTerzaghi(c,nc,q,nq,y,b,nr,ftg_type):
     return ubc
 
 
-
 "-----------------------------------------------"
 "------------------Meyerhof---------------------"
 "-----------------------------------------------"
 
 def meyerhofShapeFactor(b,l,nq,nc,angle):
     fcs = 1 + (b/l)*(nq/nc)
-    fqs = 1 + (b/l)*(nq/nc)*math.tan(angle) ##TODO
+    fqs = 1 + (b/l)*(nq/nc)*math.tan(math.radians(angle)) ##TODO
     fys = 1 - (0.4*(b/l))
         
     return {
@@ -165,15 +168,15 @@ def meyerhofInclinationFactor(angle,beta):
 def meyerhofDepthFactor(df,b,angle,nc):
 
     dfoverB = df/b
-        
+    rad_angle = math.radians(angle)
     if dfoverB <= 1:
         if angle == 0 :
             fcd = 1 + (0.4*(dfoverB))
             fqd = 1
             fyd = 1
         else:
-            fqd =  1 + ((2*math.tan(angle))*math.pow(1 - math.sin(angle),2)*dfoverB)
-            fcd = fqd - ((1 - fqd)/(nc*math.tan(angle)))
+            fqd =  1 + ((2*math.tan(rad_angle))*math.pow(1 - math.sin(rad_angle),2)*dfoverB)
+            fcd = fqd - ((1 - fqd)/(nc*math.tan(rad_angle)))
             fyd  = 1
     else :
         if angle == 0:
@@ -184,7 +187,7 @@ def meyerhofDepthFactor(df,b,angle,nc):
          
         else:
             fqd_init = math.atan(dfoverB) ##radians
-            fqd =  1 + 2*math.atan(angle)*math.pow(1 - math.sin(angle),2)*fqd_init
+            fqd =  1 + 2*math.atan(rad_angle)*math.pow(1 - math.sin(rad_angle),2)*fqd_init
             fcd = 1 + (0.4*(dfoverB))
             fyd  = 1
      
@@ -194,5 +197,9 @@ def meyerhofDepthFactor(df,b,angle,nc):
         "fyd" : fyd,               
     }
 
-
-  
+def bearingMeyerhof(c,nc,fcs,fcd,fci,q,nq,fqs,fqd,fqi,y,b,nr,fys,fyd,fyi):
+    cohension = c*nc*fcs*fcd*fci
+    surcharge = q*nq*fqs*fqd*fqi
+    soil = 0.5*y*b*nr*fys*fyd*fyi
+    qu = cohension + surcharge + soil
+    return qu
