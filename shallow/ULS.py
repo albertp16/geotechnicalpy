@@ -117,11 +117,14 @@ def bearingTerzaghi(c,nc,q,nq,y,b,nr,ftg_type):
     ubc = cohesion_term + surcharge_term + soil_weight_term
     return ubc
 
+
+
 "-----------------------------------------------"
 "------------------Meyerhof---------------------"
 "-----------------------------------------------"
+
 def meyerhofShapeFactor(b,l,nq,nc,angle):
-    fcs = 1 + (b/l)*(nq/qc)
+    fcs = 1 + (b/l)*(nq/nc)
     fqs = 1 + (b/l)*(nq/nc)*math.tan(angle) ##TODO
     fys = 1 - (0.4*(b/l))
         
@@ -133,8 +136,6 @@ def meyerhofShapeFactor(b,l,nq,nc,angle):
     }
 
 def meyerhofInclinationFactor(angle,beta):
-    
-    
     '''
     Inclination Factors<br>
     reference: Meyerhof (1963); Hanna and Meyerhof (1981)
@@ -151,115 +152,47 @@ def meyerhofInclinationFactor(angle,beta):
         DESCRIPTION. Meyerhof Inclination Factors
 
     '''
-    beta = this.data['beta'] ##
     fci = math.pow((1 - (beta/90)),2)
     fqi = fci
-    fyi = 1 - (beta/phi)
+    fyi = 1 - (beta/angle)
 
     return {
         "fci" : fci,
         "fqi" : fqi,
         "fyi" : fyi
     }
-def bearingMeyerhof(c,nc,q,nq,y,b,nr,l,angle):
-    """
-    Meyerhof (1963) Bearing Capacity Equation
 
-    Parameters
-    ----------
-    c : TYPE float
-        DESCRIPTION. Cohesion\n
-    nc : TYPE float
-        DESCRIPTION. Terzaghi Capacity Factors\n
-    q : TYPE float
-        DESCRIPTION. Surcharge\n
-    nq : TYPE float
-        DESCRIPTION. Terzaghi Capacity Factors\n
-    y : TYPE float
-        DESCRIPTION. Unit Weight of Soil\n
-    b : TYPE float
-        DESCRIPTION. Width of Foundation\n
-    nr : TYPE float
-        DESCRIPTION.Terzaghi Capacity Factors\n
-    ftg_type : TYPE string
-        DESCRIPTION. sc & sr factor from type of foundation ["strip","square","circular"]\n
+def meyerhofDepthFactor(df,b,angle,nc):
 
-    Returns
-    -------
-    ubc : TYPE float
-        DESCRIPTION. Ultimate Bearing Capacity
-
-    """
-    
-
-    def depth():
-        var df = this.data['df'] 
-        var B = this.data['b']
-        var dfoverB = df/B
-        var phi = this.data['angle']
-        var nc = this.data['nc']
+    dfoverB = df/b
         
-        if(dfoverB <= 1){
-
-            if(angle == 0){
-                var Fcd = 1 + (0.4*(dfoverB))
-                var Fqd =  1
-                var Fyd  = 1
-            } else {
-                var Fqd =  1 + ((2*Math.tan(phi))*Math.pow(1 - Math.sin(phi),2)*dfoverB)
-                var Fcd = Fqd - ((1 - Fqd)/(nc*Math.tan(phi)))
-                var Fyd  = 1
-            }  
-
-
-        } else {
-            
-            if(phi == 0){
-                var Fqd_init = 0.4*Math.atan(dfoverB) //radians
-                var Fqd =  1 + (0.4*Fqd_init)
-                var Fyd  = 1
-                var Fcd = 1 
+    if dfoverB <= 1:
+        if angle == 0 :
+            fcd = 1 + (0.4*(dfoverB))
+            fqd = 1
+            fyd = 1
+        else:
+            fqd =  1 + ((2*math.tan(angle))*math.pow(1 - math.sin(angle),2)*dfoverB)
+            fcd = fqd - ((1 - fqd)/(nc*math.tan(angle)))
+            fyd  = 1
+    else :
+        if angle == 0:
+            fqd_init = 0.4*math.atan(dfoverB) ##radians
+            fqd =  1 + (0.4*fqd_init)
+            fyd  = 1
+            fcd = 1 
+         
+        else:
+            fqd_init = math.atan(dfoverB) ##radians
+            fqd =  1 + 2*math.atan(angle)*math.pow(1 - math.sin(angle),2)*fqd_init
+            fcd = 1 + (0.4*(dfoverB))
+            fyd  = 1
      
-            } else {
-     
-                var Fqd_init = Math.atan(dfoverB) //radians
-                var Fqd =  1 + 2*Math.atan(phi)*Math.pow(1 - Math.sin(phi),2)*Fqd_init
-                var Fcd = 1 + (0.4*(dfoverB))
-                var Fyd  = 1
-     
-            }  
-        }
-    
+    return {
+        "fcd" : fcd,
+        "fqd" : fqd,
+        "fyd" : fyd,               
+    }
 
-    # if ftg_type == 'strip':
-    #     sc = 1
-    #     sr = 1
-    # elif ftg_type == 'square': 
-    #     sc = 1.3 
-    #     sr = 0.8
-    # elif ftg_type == 'circular': 
-    #     sc = 1.3
-    #     sr = 0.6 
-    
-    # cohesion_term = c*nc*sc
-    # surcharge_term = q*nq 
-    # soil_weight_term = 0.5*y*b*nr*sr
-    
-    # ubc = cohesion_term + surcharge_term + soil_weight_term
-    # return ubc
-    
-    
 
-# plotTerzaghi(
-#     terzaghi_bearing_capacity_factors['nc'],
-#     terzaghi_bearing_capacity_factors['nq'],
-#     terzaghi_bearing_capacity_factors['ny'],
-#     terzaghi_bearing_capacity_factors['angle']
-#     )
-
-# plotMeyerhof(
-#     meyerhof_bearing_capacity_factors['nc'],
-#     meyerhof_bearing_capacity_factors['nq'],
-#     meyerhof_bearing_capacity_factors['ny'],
-#     meyerhof_bearing_capacity_factors['angle']
-#     )
+  
