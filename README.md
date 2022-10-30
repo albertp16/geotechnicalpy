@@ -55,7 +55,8 @@ Install package with,
 ## References
 <ol>
 <li>Lecture Notes in Professional Master of Structural Design in Tall Buildings (PMTB) at Asian Institute Technology - Thailand </li>
-<li>Das, B. Sivakugan, N. (2017). Principle of Foundation Engineering (9th ed.). Cengage</li>
+<li>Das, B., Sivakugan, N. (2017). Principle of Foundation Engineering (9th ed.). Cengage</li>
+<li>Poulos, H. (2017). Tall Building Foundation Design. CRC Press</li>
 </ol>
 
 
