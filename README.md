@@ -60,7 +60,7 @@ Install package with,
 </ol>
 
 
-Created by:
+Developed by:
 
 **Albert Pamonag, M.Eng** <br>
 Currently enrolled in Professional Master of Structural Design in Tall Buildings (PMTB) at Asian Institute Technology - Thailand.<br>
