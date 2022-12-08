@@ -55,25 +55,25 @@ def plotTerzaghi(nc,nq,ny,angle,author,plotx,ploty):
     plt.legend()
     plt.show()
 
-    plot_x = nc
-    plot_x2 = nq
-    plot_x3 = ny
-    plot_y = angle
+    # plot_x = nc
+    # plot_x2 = nq
+    # plot_x3 = ny
+    # plot_y = angle
     
-    fig, ax = plt.subplots(figsize=(15,10))
+    # fig, ax = plt.subplots(figsize=(15,10))
     
-    ax.plot(plot_x, plot_y, label = "nc")
-    ax.plot(plot_x2, plot_y, label = "nq")
-    ax.plot(plot_x3, plot_y, label = "ny")
+    # ax.plot(plot_x, plot_y, label = "nc")
+    # ax.plot(plot_x2, plot_y, label = "nq")
+    # ax.plot(plot_x3, plot_y, label = "ny")
     
     
-    ax.set(xlabel="Bearing Capacity Factor, Nc, Nq, Ny", ylabel="Angle of Shear resistance,Φ'(deg)",
-            title="Meyerhof Bearing Capacity Factor")
-    ax.grid()
-    fig.savefig("Meyerhof_plot.png")
-    plt.xscale('log')
-    plt.legend()
-    plt.show()
+    # ax.set(xlabel="Bearing Capacity Factor, Nc, Nq, Ny", ylabel="Angle of Shear resistance,Φ'(deg)",
+    #         title="Meyerhof Bearing Capacity Factor")
+    # ax.grid()
+    # fig.savefig("Meyerhof_plot.png")
+    # plt.xscale('log')
+    # plt.legend()
+    # plt.show()
 
 def bearingTerzaghi(c,nc,q,nq,y,b,nr,ftg_type):
     """
@@ -203,3 +203,5 @@ def bearingMeyerhof(c,nc,fcs,fcd,fci,q,nq,fqs,fqd,fqi,y,b,nr,fys,fyd,fyi):
     soil = 0.5*y*b*nr*fys*fyd*fyi
     qu = cohension + surcharge + soil
     return qu
+
+# plotTerzaghi(nc,nq,ny,angle,"Terzaghi")
