@@ -23,7 +23,7 @@ data = {
 # //Ultimate Skin Friction Resistance 
 
 # //using alpha method
-Pa = 2088.5434 ## 100
+Pa = 2000 ## 100
 
 alpha = {
     "0.1" : 1,
